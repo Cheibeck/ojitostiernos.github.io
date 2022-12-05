@@ -3,16 +3,21 @@ body{
     font-family: ;
 }
 h1{
-    background-color: papayawhip;
-    order: 2px solid #000000;
+    background-color: #fee8c1;
+    border: 2px solid #000000;
     -moz-border-radius: 7px;
     -webkit-border-radius: 7px;
-    padding: 30px;
+    padding-top: 1%;
+    padding-bottom: 1%;
     margin-bottom: 0.15%;
+    text-align: center;
+}
+h2{
+    margin-left: 1%;
 }
 nav{
     background-color: papayawhip;
-    order: 2px solid #000000;
+    border: 2px solid #000000;
     -moz-border-radius: 7px;
     -webkit-border-radius: 7px;
     padding: 10px;
@@ -23,14 +28,14 @@ nav{
 
 }
 .index-item{
-    margin: 0.1%;
+    margin-top: 0.2%;
     background-color: papayawhip;
-    order: 1px solid #000000;
+    border: 1px solid #000000;
     -moz-border-radius: 7px;
     -webkit-border-radius: 7px;
 }
 img{
-    display: inline-block;
+    display: inline;
     width: 30%;  
-    margin-left: 35%;  
+    margin-left: 0.1%;  
 }
