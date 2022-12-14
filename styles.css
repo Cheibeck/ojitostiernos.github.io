@@ -92,12 +92,12 @@ footer{
         margin: 0;
     }
     .cards-container{
-        grid-template-columns: repeat(auto-fill, 120px);
-        gap: 8px;
-        place-content:center;
+        grid-template-columns: repeat(auto-fill, 110px);
+        gap: 4px;
+        place-content:initial;
         margin-left: 1%;
     }
     .img-index{
-        height: 110px;
+        height: 100px;
     }
 }
