@@ -81,6 +81,9 @@ footer{
 }
 
 @media (max-width: 600px){
+    h1{
+        margin-left: 1%;
+    }
     h2{
         font-size: 70%;
     }
