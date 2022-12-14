@@ -64,9 +64,20 @@ footer{
     margin-left: 5%;
     margin-right: 5%;
 }
+
+/*pocoyo.html*/
+.img-pocoyo{
+    width: 80%;
+}
+.main-pocoyo{
+    display: grid;
+    place-content:center;
+    margin-left: 10%;
+}
+
 @media (max-width: 600px){
     h2{
-        font-size: 10%;
+        font-size: 70%;
     }
     nav{
         margin-bottom: 1%;
@@ -75,7 +86,7 @@ footer{
         margin: 0;
     }
     .cards-container{
-        grid-template-columns: repeat(auto-fill, 250px);
+        grid-template-columns: repeat(auto-fill, 140px);
         gap: 10px;
         place-content:initial;
         margin-left: 1%;
