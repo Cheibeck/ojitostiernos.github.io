@@ -47,20 +47,35 @@ function closeProductDetailAside(){
 //productos
 const productList = [];
 productList.push({
-    name: 'bike',
-    price: 120,
-    image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-    link: 'hola.html'
+    name: 'pocoyo',
+    price: 'pocoyo',
+    image: 'https://i.postimg.cc/WbX9hyPd/IMG-20220507-WA0003.jpg',
+    link: 'pocoyo.html'
 });
 productList.push({
-    name: 'Pantalla',
-    price: 220,
-    image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    name: 'Elsa',
+    price: 'Frozen',
+    image: 'https://i.postimg.cc/4x7XqLD0/IMG-20230313-WA0002.jpg',
 });
 productList.push({
-    name: 'Computadora',
-    price: 3120,
-    image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+    name: 'Frida',
+    price: 'Frida',
+    image: 'https://i.postimg.cc/wxnzS5Qn/20230107-160135.jpg',
+});
+productList.push({
+    name: 'Oso',
+    price: 'Oso',
+    image: 'https://i.postimg.cc/pLHRw6xb/IMG-20230107-WA0000.jpg',
+});
+productList.push({
+    name: 'Chancho',
+    price: 'Chancho',
+    image: 'https://i.postimg.cc/xdsQbjmn/20230107-160812.jpg',
+});
+productList.push({
+    name: 'Conejo',
+    price: 'Conejo',
+    image: 'https://i.postimg.cc/kM2JKSwZ/20230107-155805.jpg',
 });
 
 //funcion para mostrar todos los productos
@@ -80,7 +95,7 @@ for(product of productList){
     const productInfoDiv = document.createElement('div');
     
     const productPrice = document.createElement('p');
-    productPrice.innerText = '$' + product.price;
+    productPrice.innerText = product.price;
     const productName = document.createElement('p');
     productName.innerText = product.name;
 
