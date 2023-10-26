@@ -1,0 +1,107 @@
+:root{
+    --fondo: papayawhip;
+    --sm:12px;
+    --md: 16px;
+    --lg: 20px;
+}
+
+body{
+    background-color: var(--fondo);
+    font-family: 'Quicksand', sans-serif;
+}
+h1{
+    background-color: var(--fondo);
+    border: 1px solid #996000;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin-bottom: 0.15%;
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    font-weight:bold;
+}
+h2{
+    margin-left: 1%;
+}
+nav{
+    background-color: var(--fondo);
+    border: 1px solid #996000;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    padding: 10px;
+    font-size: 150%;
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 0.3%;
+}
+.main-container{
+    margin-left: 1%;
+}
+.cards-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 20%);
+    place-content: center;
+    gap: 12px;
+}
+.index-item{
+    padding: 2%;
+    margin-top: 0.2%;
+    background-color: var(--fondo);
+    border: 1px solid #996000;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+}
+img{
+    display: inline;
+    width: 100%;  
+    margin-left: 0.2%;  
+}
+.img-index{
+    display: inline-block;
+    height: 380px;
+}
+footer{
+    margin-top: 5%;
+    margin-bottom: 40%;
+    margin-left: 20%;
+    margin-right: 5%;
+}
+
+/*pocoyo.html*/
+.img-pocoyo{
+    width: 80%;
+}
+.main-pocoyo{
+    display: grid;
+    place-content:center;
+    margin-left: 10%;
+}
+
+@media (max-width: 600px){
+    h1{
+        margin-left: 1%;
+    }
+    h2{
+        font-size: 70%;
+    }
+    nav{
+        margin-bottom: 1%;
+        margin-left: 1%;
+        font-size: 90%;
+    }
+    .main-container{
+        margin: 0;
+    }
+    .cards-container{
+        grid-template-columns: repeat(auto-fill, 110px);
+        gap: 4px;
+        place-content:initial;
+        margin-left: 1%;
+    }
+    .img-index{
+        height: 100px;
+    }
+}
