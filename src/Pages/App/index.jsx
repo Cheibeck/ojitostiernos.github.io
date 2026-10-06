@@ -31,7 +31,7 @@ const AppRoutes = () => {
 function App() {
   return (
     <ShoppingProvider>
-        <BrowserRouter>
+        <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '') || '/'}>
           <AppRoutes />
           <Navbar />
           <CheckoutSideMenu />

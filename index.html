@@ -7,7 +7,14 @@
     <title>Ojitos Tiernos</title>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root" data-base="%BASE_URL%"></div>
+    <script>
+      const route = new URLSearchParams(window.location.search).get('route')
+      if (route !== null) {
+        const base = document.getElementById('root').dataset.base
+        window.history.replaceState(null, '', `${base}${route}`)
+      }
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
