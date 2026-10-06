@@ -5,32 +5,38 @@ import { ShoppingContext } from "../../Context"
 import OrderCard from "../OrderCard"
 import { totalPrice } from "../../utils"
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 
 const CheckoutSideMenu = () => {
     const context = useContext(ShoppingContext)
+    const navigate = useNavigate()
+    const [checkoutError, setCheckoutError] = useState('')
+    const [isSubmitting, setIsSubmitting] = useState(false)
     
     const handleDelete = (id) => {
         const filteredProducts = context.cart.filter(product => product.id != id)
         context.setCart(filteredProducts)
-        context.setCount(context.count - 1)
+        context.setCount(filteredProducts.length)
     }
 
-    const handleCheckout = () => {
-        const orderToAdd = {
-            date: '01.02.23',
-            products: context.cart,
-            totalProducts: context.cart.length,
-            totalPrice: totalPrice(context.cart)
+    const handleCheckout = async () => {
+        if (!context.authToken) {
+            setCheckoutError('Inicia sesión para guardar tu pedido.')
+            return
         }
-        if(Array.isArray(context.order)){
-            context.setOrder([...context.order, orderToAdd])
-        }else{
-            context.setOrder(orderToAdd)
+
+        setIsSubmitting(true)
+        setCheckoutError('')
+        try {
+            await context.createOrder()
+            context.cartClose()
+            navigate('/MyOrders/last')
+        } catch (error) {
+            setCheckoutError(error.message)
+        } finally {
+            setIsSubmitting(false)
         }               
-        
-        context.setCount(context.count = 0)
-        context.setCart([])
-        context.setSearchByTitle(null)
     }
 
     return (
@@ -60,9 +66,19 @@ const CheckoutSideMenu = () => {
                     <span className="font-light">Total:</span>
                     <span className="font-medium text-xl">${totalPrice(context.cart)}</span>
                 </p>
-                <Link to={'/myOrders/last'}>
-                    <button className='bg-black py-3 text-white w-full rounded-lg' onClick={()=>{handleCheckout();context.cartClose()}}>Checkout</button>
-                </Link>
+                {checkoutError && (
+                    <p role="alert" className="my-2 text-sm text-red-700">
+                        {checkoutError}{' '}
+                        {!context.authToken && <Link className="underline" to="/Signin">Iniciar sesión</Link>}
+                    </p>
+                )}
+                <button
+                    className='bg-black py-3 text-white w-full rounded-lg disabled:opacity-50'
+                    disabled={isSubmitting || context.cart.length === 0}
+                    onClick={handleCheckout}
+                >
+                    {isSubmitting ? 'Guardando pedido…' : 'Checkout'}
+                </button>
             </div>
             
         </aside>

@@ -6,7 +6,6 @@ import "./navbar.css"
 
 const Navbar = () => {
     const context = useContext(ShoppingContext)
-    const activeStyle = 'underline'
     return (
         <nav className="flex justify-between items-center fixed z-10 w-full py-2 px-8 text-sm font-light top-0 bg-red-100">
             <ul className="flex items-center gap-3">
@@ -71,12 +70,13 @@ const Navbar = () => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to='/Signin'
-                            //className={({ isActive }) => isActive ? activeStyle : undefined}
-                            className={'logueo'}
-                    >
-                        Signin
-                    </NavLink>
+                    {context.user ? (
+                        <button className="logueo" onClick={context.signOut}>Cerrar sesión</button>
+                    ) : (
+                        <NavLink to='/Signin' className={'logueo'}>
+                            Iniciar sesión
+                        </NavLink>
+                    )}
                 </li>
                 <li>
                     <NavLink to='/' className="flex">

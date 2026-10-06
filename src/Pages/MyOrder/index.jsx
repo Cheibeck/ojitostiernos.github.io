@@ -3,17 +3,16 @@ import { useContext } from "react"
 import { ShoppingContext } from "../../Context"
 import OrderCard from "../../Components/OrderCard"
 import { Link } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { GiHorizontalFlip } from 'react-icons/gi'
 
 const MyOrder = () => {
   const context = useContext(ShoppingContext)
-  let currentPath = window.location.pathname
-  let index = currentPath.substring(currentPath.lastIndexOf('/') +1)
-  
-  
-  if (index === 'last') index = context.order?.length -1
-
-  let sli = context.order?.[index]?.products
+  const { id } = useParams()
+  const currentOrder = id === 'last'
+    ? context.order[0]
+    : context.order.find((order) => order.id === id)
+  const products = currentOrder?.products || []
   return (
     <>
       <Layout>
@@ -27,9 +26,7 @@ const MyOrder = () => {
         <div className="flex flex-col w-100">
             
             
-            {
-                
-                sli.map(product => (
+            {products.length > 0 ? products.map(product => (
                 <OrderCard 
                     key={product.id}
                     id={product.id}
@@ -37,8 +34,7 @@ const MyOrder = () => {
                     imageURL={product.images}
                     price={product.price}
                 />
-            ))
-            }
+            )) : <p>No se encontró el pedido.</p>}
             </div>
       </Layout>
     </>

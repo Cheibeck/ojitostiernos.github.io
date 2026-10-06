@@ -8,7 +8,8 @@ import { ShoppingContext } from "../../Context"
 const Home = () => {
   const context = useContext(ShoppingContext)
   const renderView = () => {
-    
+      if (context.isLoadingItems) return <p>Cargando productos…</p>
+      if (context.itemsError) return <p role="alert">{context.itemsError}</p>
       if(context.filteredItems?.length > 0){
           return(
             context.filteredItems?.map(item => (

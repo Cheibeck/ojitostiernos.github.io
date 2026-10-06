@@ -15,10 +15,16 @@ const MyOrders = () => {
           <h1 className="font-medium text-xl">Mis Ordenes</h1>
           
         </div>
+        {context.ordersError && <p role="alert">{context.ordersError}</p>}
+        {!context.authToken && <p>Inicia sesión para consultar tus pedidos.</p>}
         {
-          context.order.map((order, index) => (
-            <Link key={index} to={`/MyOrders/${index}`}>
-              <OrdersCard totalPrice={order.totalPrice} totalProducts={order.totalProducts} />             
+          context.order.map((order) => (
+            <Link key={order.id} to={`/MyOrders/${order.id}`}>
+              <OrdersCard
+                date={order.createdAt}
+                totalPrice={order.totalPrice}
+                totalProducts={order.totalProducts}
+              />
             </Link>
           ))
         }

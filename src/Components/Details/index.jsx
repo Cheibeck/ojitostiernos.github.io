@@ -16,7 +16,7 @@ const Details = () => {
             </div>
             <figure className="px-6">
                 <img 
-                    src={context.product.images}
+                    src={Array.isArray(context.product.images) ? context.product.images[0] : context.product.images}
                     alt={context.product.title} 
                     className="w-full h-auto rounded-lg"
                 />
