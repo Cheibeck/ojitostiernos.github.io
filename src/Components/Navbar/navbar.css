@@ -16,36 +16,29 @@
 }
 
 .navbar-main {
-    min-height: 76px;
+    min-height: 60px;
     justify-content: space-between;
-    gap: 32px;
+    gap: 24px;
 }
 
 .brand {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     flex-shrink: 0;
 }
 
-.brand-mark {
-    display: grid;
-    place-items: center;
+.brand-logo {
     width: 38px;
     height: 38px;
-    border-radius: 50%;
-    background: var(--color-rose);
-    color: var(--color-ink);
-    font-family: Georgia, serif;
-    font-size: 29px;
-    font-style: italic;
-    line-height: 1;
+    object-fit: cover;
+    clip-path: circle(44% at 50% 50%);
 }
 
 .brand-name {
     color: var(--color-ink);
     font-family: Georgia, "Times New Roman", serif;
-    font-size: 21px;
+    font-size: 18px;
     font-weight: 600;
     letter-spacing: -0.7px;
 }
@@ -143,8 +136,8 @@
 }
 
 .category-nav {
-    min-height: 45px;
-    gap: 30px;
+    min-height: 38px;
+    gap: 26px;
     border-top: 1px solid #f0ece5;
 }
 
@@ -152,7 +145,7 @@
     position: relative;
     display: inline-flex;
     align-items: center;
-    height: 45px;
+    height: 38px;
     color: #6e6a62;
     font-size: 12px;
     transition: color 160ms ease;
@@ -181,6 +174,20 @@
     font-style: italic;
 }
 
+.instagram-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--color-terracotta);
+    font-size: 12px;
+    font-weight: 600;
+    transition: color 160ms ease;
+}
+
+.instagram-link:hover {
+    color: var(--color-ink);
+}
+
 @media (max-width: 760px) {
     .navbar-main,
     .category-nav {
@@ -188,18 +195,17 @@
     }
 
     .navbar-main {
-        min-height: 68px;
-        gap: 14px;
+        min-height: 54px;
+        gap: 12px;
     }
 
     .brand {
         gap: 7px;
     }
 
-    .brand-mark {
+    .brand-logo {
         width: 32px;
         height: 32px;
-        font-size: 25px;
     }
 
     .brand-name {
@@ -231,7 +237,7 @@
 
     .category-nav {
         gap: 24px;
-        min-height: 42px;
+        min-height: 36px;
         overflow-x: auto;
         scrollbar-width: none;
     }
@@ -242,11 +248,16 @@
 
     .category-link {
         flex-shrink: 0;
-        height: 42px;
+        height: 36px;
     }
 
     .nav-note {
         display: none;
+    }
+
+    .instagram-link {
+        flex-shrink: 0;
+        height: 36px;
     }
 }
 
@@ -262,6 +273,11 @@
 
     .brand-name {
         font-size: 15px;
+    }
+
+    .brand-logo {
+        width: 29px;
+        height: 29px;
     }
 
     .search-field {

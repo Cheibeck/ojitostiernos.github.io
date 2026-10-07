@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom"
 import { useContext } from "react"
 import { ShoppingContext } from "../../Context"
-import { FiSearch, FiShoppingBag } from "react-icons/fi"
+import { FiInstagram, FiSearch, FiShoppingBag } from "react-icons/fi"
 import "./navbar.css"
 
 const categories = [
@@ -18,7 +18,11 @@ const Navbar = () => {
         <header className="site-header">
             <div className="navbar-main">
                 <NavLink className="brand" to="/" onClick={() => context.setSearchByCategory()}>
-                    <span className="brand-mark" aria-hidden="true">o</span>
+                    <img
+                        className="brand-logo"
+                        src={`${import.meta.env.BASE_URL}ojitos-tiernos-logo.png`}
+                        alt=""
+                    />
                     <span className="brand-name">Ojitos <span>Tiernos</span></span>
                 </NavLink>
 
@@ -66,6 +70,16 @@ const Navbar = () => {
                     </NavLink>
                 ))}
                 <span className="nav-note">Hecho a mano, con cariño</span>
+                <a
+                    className="instagram-link"
+                    href="https://www.instagram.com/ojitostiernosmza/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Visita Ojitos Tiernos en Instagram"
+                >
+                    <FiInstagram aria-hidden="true" />
+                    <span>Instagram</span>
+                </a>
             </nav>
         </header>
     )
