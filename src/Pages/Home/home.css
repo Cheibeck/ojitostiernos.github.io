@@ -1,11 +1,327 @@
-.layout{
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    
+.storefront {
+    width: min(100% - 64px, 1320px);
+    margin: 0 auto;
+    padding: 34px 0 80px;
 }
 
-@media (max-width: 600px){
-    .layout{
+.welcome-banner {
+    position: relative;
+    display: flex;
+    min-height: 310px;
+    align-items: center;
+    overflow: hidden;
+    padding: 44px 8%;
+    background: #f4eee6;
+    border-radius: 18px;
+}
+
+.welcome-copy {
+    position: relative;
+    z-index: 1;
+    max-width: 560px;
+}
+
+.eyebrow {
+    margin: 0 0 13px;
+    color: var(--color-terracotta);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    line-height: 1.5;
+    text-transform: uppercase;
+}
+
+.welcome-copy h1 {
+    margin: 0;
+    color: var(--color-ink);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(36px, 5vw, 58px);
+    font-weight: 500;
+    letter-spacing: -2.3px;
+    line-height: 1.04;
+}
+
+.welcome-copy h1 em {
+    color: var(--color-terracotta);
+    font-weight: 400;
+}
+
+.welcome-description {
+    max-width: 410px;
+    margin: 17px 0 20px;
+    color: #69645b;
+    font-size: 13px;
+    line-height: 1.75;
+}
+
+.welcome-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 5px;
+    color: var(--color-ink);
+    border-bottom: 1px solid var(--color-terracotta);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.welcome-link span {
+    color: var(--color-terracotta);
+    font-size: 17px;
+    transition: transform 160ms ease;
+}
+
+.welcome-link:hover span {
+    transform: translate(2px, -2px);
+}
+
+.welcome-art {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 100%;
+    overflow: hidden;
+    background: #eadbd0;
+}
+
+.welcome-art::before,
+.welcome-art::after {
+    position: absolute;
+    border: 1px solid rgba(168, 95, 75, 0.22);
+    border-radius: 50%;
+    content: "";
+}
+
+.welcome-art::before {
+    top: -108px;
+    right: -44px;
+    width: 320px;
+    height: 320px;
+}
+
+.welcome-art::after {
+    right: 23px;
+    bottom: -185px;
+    width: 380px;
+    height: 380px;
+}
+
+.art-flower {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #b56f59;
+    font-size: clamp(120px, 18vw, 220px);
+    line-height: 1;
+    transform: translate(-50%, -54%) rotate(-13deg);
+}
+
+.art-stitch {
+    position: absolute;
+    z-index: 1;
+    width: 90px;
+    height: 90px;
+    border: 1px dashed rgba(84, 79, 67, 0.36);
+    border-radius: 50%;
+}
+
+.stitch-one {
+    top: 25px;
+    left: 32px;
+}
+
+.stitch-two {
+    right: 37px;
+    bottom: 25px;
+    width: 54px;
+    height: 54px;
+}
+
+.art-caption {
+    position: absolute;
+    right: 16%;
+    bottom: 34px;
+    color: #72594e;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 13px;
+    font-style: italic;
+    line-height: 1.4;
+    text-align: right;
+}
+
+.catalog {
+    padding-top: 47px;
+    scroll-margin-top: 140px;
+}
+
+.catalog-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 22px;
+}
+
+.catalog-heading .eyebrow {
+    margin-bottom: 6px;
+}
+
+.catalog-heading h2 {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: -0.8px;
+}
+
+.product-count {
+    margin: 0 0 4px;
+    color: var(--color-muted);
+    font-size: 12px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 34px 22px;
+}
+
+.catalog-message {
+    grid-column: 1 / -1;
+    padding: 40px 0;
+    color: var(--color-muted);
+    text-align: center;
+}
+
+.error-message {
+    color: #9c3d31;
+}
+
+.empty-catalog {
+    grid-column: 1 / -1;
+    padding: 56px 20px;
+    color: var(--color-muted);
+    text-align: center;
+}
+
+.empty-catalog > span {
+    color: var(--color-terracotta);
+    font-family: Georgia, serif;
+    font-size: 34px;
+}
+
+.empty-catalog h3 {
+    margin: 10px 0 6px;
+    color: var(--color-ink);
+    font-family: Georgia, serif;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.empty-catalog p {
+    margin: 0 0 17px;
+    font-size: 13px;
+}
+
+.empty-catalog button {
+    padding: 10px 15px;
+    color: white;
+    background: var(--color-ink);
+    border: 0;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+@media (max-width: 1000px) {
+    .product-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        padding: 2%;
+        gap: 28px 18px;
+    }
+}
+
+@media (max-width: 760px) {
+    .storefront {
+        width: calc(100% - 36px);
+        padding-top: 24px;
+    }
+
+    .welcome-banner {
+        min-height: 290px;
+        padding: 34px 7%;
+        border-radius: 14px;
+    }
+
+    .welcome-art {
+        width: 36%;
+        opacity: 0.72;
+    }
+
+    .welcome-copy {
+        max-width: 72%;
+    }
+
+    .welcome-copy h1 {
+        font-size: clamp(34px, 7vw, 46px);
+    }
+
+    .welcome-description {
+        max-width: 350px;
+        font-size: 12px;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 25px 14px;
+    }
+
+    .catalog {
+        padding-top: 36px;
+    }
+}
+
+@media (max-width: 480px) {
+    .storefront {
+        width: calc(100% - 28px);
+        padding-top: 18px;
+        padding-bottom: 56px;
+    }
+
+    .welcome-banner {
+        min-height: 285px;
+        align-items: flex-start;
+        padding: 29px 22px;
+    }
+
+    .welcome-art {
+        top: auto;
+        right: -22px;
+        bottom: 0;
+        width: 47%;
+        height: 47%;
+        opacity: 0.38;
+    }
+
+    .welcome-copy {
+        max-width: 100%;
+    }
+
+    .welcome-copy h1 {
+        font-size: 39px;
+        letter-spacing: -1.5px;
+    }
+
+    .welcome-description {
+        max-width: 275px;
+        margin: 13px 0 16px;
+        font-size: 12px;
+    }
+
+    .catalog-heading h2 {
+        font-size: 26px;
+    }
+
+    .catalog-heading {
+        margin-bottom: 17px;
     }
 }

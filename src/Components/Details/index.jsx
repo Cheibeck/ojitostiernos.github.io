@@ -8,24 +8,31 @@ const Details = () => {
     
     return (
         <aside className={`${context.isDetailOpen ? 'flex' : 'hidden'} product-detail flex flex-col fixed border border-black rounded-lg bg-white overflow-y-scroll`}>
-            <div className="flex justify-between items-center p-2">
-                <h2 className="font-medium text-xl">Detalles</h2>
-                <span className="abolsolute cursor-pointer"
-                      onClick={()=>context.detailClose()}
-                ><GiCrossMark /></span>
+            <div className="detail-heading">
+                <div>
+                    <p className="eyebrow">Una pieza especial</p>
+                    <h2>Detalles</h2>
+                </div>
+                <button
+                    className="detail-close"
+                    type="button"
+                    onClick={() => context.detailClose()}
+                    aria-label="Cerrar detalles"
+                >
+                    <GiCrossMark />
+                </button>
             </div>
-            <figure className="px-6">
+            <figure className="detail-image">
                 <img 
                     src={Array.isArray(context.product.images) ? context.product.images[0] : context.product.images}
                     alt={context.product.title} 
-                    className="w-full h-auto rounded-lg"
                 />
             </figure>
-            <p className="flex flex-col p-6">
-                <span className="font-medium text-2xl mb-3">{context.product.title}</span>
-                <span className="font-medium text-md mb-2">{context.product.description}</span>
-                {/* <span className="font-medium text-xl">${context.product.price}</span> */}
-            </p>
+            <div className="detail-copy">
+                <h3>{context.product.title}</h3>
+                <p>{context.product.description}</p>
+                <span className="detail-price">${context.product.price}</span>
+            </div>
         </aside>
     )
 }

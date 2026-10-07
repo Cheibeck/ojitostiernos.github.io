@@ -1,4 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+.site-layout {
+    min-height: 100vh;
+    padding-top: 121px;
+}
 
+@media (max-width: 760px) {
+    .site-layout {
+        padding-top: 110px;
+    }
+}

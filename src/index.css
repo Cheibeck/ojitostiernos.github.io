@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    color: #292720;
+    background: #fffdf9;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    --color-ink: #292720;
+    --color-muted: #777168;
+    --color-terracotta: #a85f4b;
+    --color-rose: #f0ded4;
+    --color-paper: #fffdf9;
+    --color-line: #eae5dd;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-width: 320px;
+    scroll-behavior: smooth;
+}
+
+body {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+    color: var(--color-ink);
+    background: var(--color-paper);
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--color-terracotta);
+    outline-offset: 3px;
+}
+
+::selection {
+    color: var(--color-ink);
+    background: #f0ded4;
+}

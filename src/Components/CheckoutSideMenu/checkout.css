@@ -1,5 +1,72 @@
-.checkout-side-menu{
-    width: 360px;
-    height: 80%;
-    top: 56px; 
+.checkout-side-menu {
+    z-index: 30;
+    top: 132px;
+    right: 24px;
+    width: min(420px, calc(100vw - 48px));
+    height: min(680px, calc(100vh - 156px));
+    padding: 4px;
+    background: var(--color-paper);
+    border: 1px solid var(--color-line);
+    border-radius: 15px;
+    box-shadow: 0 18px 60px rgba(45, 37, 27, 0.18);
+}
+
+.checkout-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 17px 17px 14px;
+}
+
+.checkout-heading .eyebrow {
+    margin-bottom: 3px;
+}
+
+.checkout-heading h2 {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.checkout-heading h2 span {
+    color: var(--color-muted);
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.empty-cart {
+    padding: 32px 16px;
+    color: var(--color-muted);
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.checkout-side-menu > div:last-child {
+    padding: 0 18px;
+}
+
+.checkout-side-menu > div:last-child > p {
+    padding-top: 15px;
+    border-top: 1px solid var(--color-line);
+}
+
+.checkout-side-menu button.bg-black {
+    background: var(--color-ink);
+    transition: background-color 160ms ease;
+}
+
+.checkout-side-menu button.bg-black:hover:not(:disabled) {
+    background: var(--color-terracotta);
+}
+
+@media (max-width: 760px) {
+    .checkout-side-menu {
+        top: 118px;
+        right: 12px;
+        width: calc(100vw - 24px);
+        height: min(680px, calc(100vh - 132px));
+    }
 }

@@ -1,59 +1,74 @@
 import { useContext } from "react"
+import PropTypes from "prop-types"
 import { ShoppingContext } from "../../Context"
-import { HiPlus, HiCheck} from "react-icons/hi"
+import { HiPlus, HiCheck } from "react-icons/hi"
 import "./card.css"
 
-const Card = (data) => {
+const Card = ({ data }) => {
     const context = useContext(ShoppingContext)
-    const showProduct = (productDetail) => {
+    const isInCart = context.cart.some((product) => product.id === data.id)
+
+    const showProduct = () => {
         context.detailOpen()
-        context.setProduct(productDetail)
+        context.setProduct(data)
         context.cartClose()
     }
-    const addCart = (event, productData) => {
+
+    const addCart = (event) => {
         event.stopPropagation()
+        if (isInCart) return
         context.setCount(context.count + 1)
-        context.setCart([...context.cart, productData])
+        context.setCart([...context.cart, data])
         context.cartOpen()
         context.detailClose()
     }
-    const renderIcon = (id) => {
-        const isInCart = context.cart.filter(product => product.id === id).length > 0
-        if (isInCart){
-            return(
-                <div 
-                        className="absolute flex top-0 right-0 justify-center items-center bg-green-800 w-6 h-6 rounded-full m-2 p-1"
+
+    return (
+        <article
+            className="product-card"
+            onClick={showProduct}
+            onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault()
+                    showProduct()
+                }
+            }}
+            role="button"
+            tabIndex={0}
+            aria-label={`Ver detalles de ${data.title}`}
+        >
+            <figure className="product-image">
+                <img src={data.images[0]} alt={data.title} loading="lazy" />
+                <span className="product-category">{data.category.name}</span>
+                <button
+                    className={`add-to-cart${isInCart ? " added" : ""}`}
+                    type="button"
+                    onClick={addCart}
+                    disabled={isInCart}
+                    aria-label={isInCart ? `${data.title} ya está en la bolsa` : `Agregar ${data.title} a la bolsa`}
                 >
-                        <HiCheck className="text-white"/>
-                        
-                </div>
-            )
-        }else
-            return(
-                <div 
-                        className="absolute flex top-0 right-0 justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
-                        onClick={(event) => addCart(event, data.data)}>
-                        <HiPlus />
-                </div>
-            )
-        }
-
-
-    return(
-        <div 
-        onClick={()=>showProduct(data.data)}
-        className="card bg-white cursor-pointer rounded-lg">
-            <figure className="relative mb-2 w-full h-4/5">
-                <span className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5">{data.data.category.name}</span>
-                    <img className="w-full h-full object-cover rounded-lg object-top" src={data.data.images[0]} alt="product"></img>
-                    {renderIcon(data.data.id)}
+                    {isInCart ? <HiCheck aria-hidden="true" /> : <HiPlus aria-hidden="true" />}
+                </button>
             </figure>
-            <p className="flex justify-between">
-                <span className="text-sm font-light">{ data.data.title }</span>
-                {/* <span className="text-sm font-medium">${ data.data.price }</span> */}
-            </p>
-        </div>
+            <div className="product-card-info">
+                <h3>{data.title}</h3>
+                <span className="product-price">${data.price}</span>
+            </div>
+            <p className="product-card-hint">Ver pieza <span aria-hidden="true">↗</span></p>
+        </article>
     )
+}
+
+Card.propTypes = {
+    data: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+        images: PropTypes.arrayOf(PropTypes.string).isRequired,
+        category: PropTypes.shape({
+            name: PropTypes.string.isRequired,
+        }).isRequired,
+    }).isRequired,
 }
 
 export default Card

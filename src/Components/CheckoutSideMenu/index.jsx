@@ -41,14 +41,24 @@ const CheckoutSideMenu = () => {
 
     return (
         <aside className={`${context.isCartOpen ? 'flex' : 'hidden'} checkout-side-menu flex flex-col fixed right-0 border border-black rounded-lg bg-white`}>
-            <div className="flex justify-between items-center p-2">
-                <h2 className="font-medium text-xl">Orden</h2>
-                <span className="abolsolute cursor-pointer"
-                      onClick={()=>context.cartClose()}
-                ><GiCrossMark /></span>
+            <div className="checkout-heading">
+                <div>
+                    <p className="eyebrow">Tu selección</p>
+                    <h2>Mi bolsa <span>({context.count})</span></h2>
+                </div>
+                <button
+                    className="detail-close"
+                    type="button"
+                    onClick={() => context.cartClose()}
+                    aria-label="Cerrar bolsa"
+                >
+                    <GiCrossMark />
+                </button>
             </div>
             <div className="px-2 overflow-y-scroll flex-1">
-                {
+                {context.cart.length === 0 ? (
+                    <p className="empty-cart">Tu bolsa está esperando una pieza especial.</p>
+                ) : (
             context.cart.map((product)=>(
                 <OrderCard 
                     key={product.id}
@@ -59,7 +69,7 @@ const CheckoutSideMenu = () => {
                     handleDelete={handleDelete}
                 />
             ))
-            }
+                )}
             </div>
             <div className="px-6 mt-2 mb-6">
                 <p className="flex justify-between items-center">
